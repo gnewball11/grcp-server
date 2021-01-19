@@ -1,0 +1,18 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package energy.spectral.grpcstub;
+
+message ElectricityConsumptionRequest {
+  string startDate = 1;
+  string endDate = 2;
+}
+
+message ElectricityConsumptionResponse {
+  map<string,string> timeSeries = 1;
+  string exception = 2;
+  string description = 3;
+}
+
+service ElectricityConsumptionService {
+  rpc getMeterUsage(ElectricityConsumptionRequest) returns (ElectricityConsumptionResponse);
+}
